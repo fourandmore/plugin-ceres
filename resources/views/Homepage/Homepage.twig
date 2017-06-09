@@ -103,7 +103,7 @@
                 {{ component( "Ceres::ItemList.Components.CategoryImageCarousel") }}
                 {{ component( "Ceres::Basket.Components.AddToBasket" ) }}
 
-                <div class="home container-max">
+                <div class="home container-fluid">
                     <div class="row">
                         <div class="cmp cmp-hero">
                             {% set homepageContainer1 = LayoutContainer.show("Ceres::Homepage.Container1") %}
@@ -240,7 +240,10 @@
                                 </div>
                             {% endif %}
                         </div>
-
+					</div>
+</div>
+<div class="home container-max">
+                    <div class="row">
                         {% set homepageContainer4 = LayoutContainer.show("Ceres::Homepage.Container4") %}
                         {% set homepageContainer5 = LayoutContainer.show("Ceres::Homepage.Container5") %}
 
