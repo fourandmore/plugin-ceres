@@ -1,8 +1,9 @@
 const ApiService = require("services/ApiService");
-const AddressService = require("services/AddressService");
 const ModalService = require("services/ModalService");
 const ResourceService = require("services/ResourceService");
+const AddressFieldService = require("services/AddressFieldService");
 
+import AddressService from "services/AddressService";
 import ValidationService from "services/ValidationService";
 
 Vue.component("address-select", {
@@ -24,8 +25,9 @@ Vue.component("address-select", {
             headline       : "",
             addressToEdit  : {},
             addressToDelete: {},
-            deleteModal: "",
-            localization: {}
+            deleteModal    : "",
+            localization   : {},
+            user           : {}
         };
     },
 
@@ -36,6 +38,7 @@ Vue.component("address-select", {
     {
         this.$options.template = this.template;
         ResourceService.bind("localization", this);
+        ResourceService.bind("user", this);
 
         this.addEventListener();
     },
@@ -47,6 +50,11 @@ Vue.component("address-select", {
     {
         if (!this.isAddressListEmpty())
         {
+            if (!this.selectedAddressId || this.selectedAddressId <= 0)
+            {
+                this.selectedAddressId = this.addressList[0].id;
+            }
+
             this.loadSelectedAddress();
         }
         else
@@ -145,7 +153,19 @@ Vue.component("address-select", {
         showInitialAddModal()
         {
             this.modalType = "initial";
-            this.addressToEdit = {countryId: this.localization.currentShippingCountryId};
+
+            if (AddressFieldService.isAddressFieldEnabled(this.addressToEdit.countryId, this.addressType, "salutation"))
+            {
+                this.addressToEdit = {
+                    addressSalutation: 0,
+                    countryId        : this.localization.currentShippingCountryId
+                };
+            }
+            else
+            {
+                this.addressToEdit = {countryId: this.localization.currentShippingCountryId};
+            }
+
             this.updateHeadline();
             this.addressModal.show();
         },
@@ -156,7 +176,19 @@ Vue.component("address-select", {
         showAddModal()
         {
             this.modalType = "create";
-            this.addressToEdit = {countryId: this.localization.currentShippingCountryId};
+
+            if (AddressFieldService.isAddressFieldEnabled(this.addressToEdit.countryId, this.addressType, "salutation"))
+            {
+                this.addressToEdit = {
+                    addressSalutation: 0,
+                    countryId        : this.localization.currentShippingCountryId
+                };
+            }
+            else
+            {
+                this.addressToEdit = {countryId: this.localization.currentShippingCountryId};
+            }
+
             this.updateHeadline();
             ValidationService.unmarkAllFields($(this.$els.addressModal));
             this.addressModal.show();
@@ -171,6 +203,12 @@ Vue.component("address-select", {
             this.modalType = "update";
             // Creates a tmp address to prevent unwanted two-way binding
             this.addressToEdit = JSON.parse(JSON.stringify(address));
+
+            if (typeof this.addressToEdit.addressSalutation === "undefined")
+            {
+                this.addressToEdit.addressSalutation = 0;
+            }
+
             this.updateHeadline();
             ValidationService.unmarkAllFields($(this.$els.addressModal));
             this.addressModal.show();
@@ -197,7 +235,7 @@ Vue.component("address-select", {
                 .done(() =>
                 {
                     this.closeDeleteModal();
-                    this.removeIdFromList(address.id);
+                    this.removeIdFromList(this.addressToDelete.id);
                 });
         },
 
@@ -273,8 +311,18 @@ Vue.component("address-select", {
 
                     if (this.selectedAddressId && this.selectedAddressId.toString() === id.toString())
                     {
-                        this.selectedAddress = {};
-                        this.selectedAddressId = "";
+                        if (this.addressList.length)
+                        {
+                            this.selectedAddress = this.addressList[0];
+                            this.selectedAddressId = this.selectedAddress.id;
+                        }
+                        else
+                        {
+                            this.selectedAddress = {};
+                            this.selectedAddressId = "";
+                        }
+
+                        this.$dispatch("address-changed", this.selectedAddress);
 
                         break;
                     }
@@ -288,12 +336,43 @@ Vue.component("address-select", {
          */
         onAddressCreated(addressData)
         {
-            if (!this.selectedAddressId)
-            {
-                this.selectedAddressId = addressData.id;
+            this.selectedAddressId = addressData.id;
 
-                this.loadSelectedAddress();
-            }
+            this.loadSelectedAddress();
         }
+    },
+
+    computed: {
+        isAddAddressEnabled()
+        {
+            var isLoggedIn = this.user.isLoggedIn;
+
+            if (this.addressType === "1")
+            {
+                return isLoggedIn || this.addressList.length < 1;
+            }
+
+            return isLoggedIn || this.addressList.length < 2;
+        }
+    },
+    filters : {
+
+        optionType(selectedAddress, typeId)
+        {
+            if (selectedAddress.name2)
+            {
+                for (const optionType of selectedAddress.options)
+                {
+                    if (optionType.typeId === typeId)
+                    {
+                        return optionType.value;
+                    }
+                }
+            }
+
+            return "";
+
+        }
+
     }
 });

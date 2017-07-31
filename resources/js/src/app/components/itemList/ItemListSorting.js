@@ -1,4 +1,4 @@
-var ItemListService = require("services/ItemListService");
+const ItemListService = require("services/ItemListService");
 
 import UrlService from "services/UrlService";
 
@@ -9,58 +9,55 @@ Vue.component("item-list-sorting", {
         "template"
     ],
 
-    data: function()
+    data()
     {
         return {
             selectedSorting: {},
             dataTranslationMapping:
             {
-                "item.id_asc"                : "itemId_asc",
-                "item.id_desc"               : "itemId_desc",
-                "texts.name1_asc"            : "itemName_asc",
-                "texts.name1_desc"           : "itemName_desc",
-                "item.position_asc"          : "itemPosition_asc",
-                "item.position_desc"         : "itemPosition_desc",
-                "item.salesPrice.price_asc"  : "itemPrice_asc",
-                "item.salesPrice.price_desc" : "itemPrice_desc",
-                "variation.createdAt_asc"    : "variationCreateTimestamp_asc",
-                "variation.createdAt_desc"   : "variationCreateTimestamp_desc",
-                "variation.id_asc"           : "variationId_asc",
-                "variation.id_desc"          : "variationId_desc",
-                "variation.number_asc"       : "variationCustomNumber_asc",
-                "variation.number_desc"      : "variationCustomNumber_desc",
-                "variation.updatedAt_asc"    : "variationLastUpdateTimestamp_asc",
-                "variation.updatedAt_desc"   : "variationLastUpdateTimestamp_desc",
-                "variation.position_asc"     : "variationPosition_asc",
-                "variation.position_desc"    : "variationPosition_desc",
-                "variation.isActive_asc"     : "variationActive_asc",
-                "variation.isActive_desc"    : "variationActive_desc",
-                "variation.isMain_asc"       : "variationPrimary_asc",
-                "variation.isMain_desc"      : "variationPrimary_desc",
-                "item.manufacturer.name_asc" : "itemProducerName_asc",
-                "item.manufacturer.name_desc": "itemProducerName_desc"
+                "default.recommended_sorting"               : "itemRecommendedSorting",
+                "texts.name1_asc"                           : "itemName_asc",
+                "texts.name1_desc"                          : "itemName_desc",
+                "item.salesPrices.price_asc"                : "itemPrice_asc",
+                "item.salesPrices.price_desc"               : "itemPrice_desc",
+                "variation.createdAt_asc"                   : "variationCreateTimestamp_asc",
+                "variation.createdAt_desc"                  : "variationCreateTimestamp_desc",
+                "variation.availability.averageDays_asc"    : "availabilityAverageDays_asc",
+                "variation.availability.averageDays_desc"   : "availabilityAverageDays_desc",
+                "variation.number_asc"                      : "variationCustomNumber_asc",
+                "variation.number_desc"                     : "variationCustomNumber_desc",
+                "variation.updatedAt_asc"                   : "variationLastUpdateTimestamp_asc",
+                "variation.updatedAt_desc"                  : "variationLastUpdateTimestamp_desc",
+                "item.manufacturer.externalName_asc"        : "itemProducerName_asc",
+                "item.manufacturer.externalName_desc"       : "itemProducerName_desc"
             }
         };
     },
 
-    created: function()
+    created()
     {
         this.$options.template = this.template;
 
+        if (App.isSearch)
+        {
+            this.sortData.unshift("item.score");
+            this.dataTranslationMapping["item.score"] = "itemRelevance";
+        }
+
         this.buildData();
-        this.selectedSorting = this.sortData[0];
+        this.setDefaultSorting();
 
         this.setSelectedValueByUrl();
     },
 
     methods:
     {
-        buildData: function()
+        buildData()
         {
-            for (var i in this.sortData)
+            for (const i in this.sortData)
             {
-                var data = this.sortData[i];
-                var sortItem =
+                const data = this.sortData[i];
+                const sortItem =
                     {
                         value      : data,
                         displayName: Translations.Template[this.dataTranslationMapping[data]]
@@ -70,19 +67,26 @@ Vue.component("item-list-sorting", {
             }
         },
 
-        updateSorting: function()
+        setDefaultSorting()
+        {
+            const defaultSortKey = App.isSearch ? App.config.defaultSortingSearch : App.config.defaultSorting;
+
+            this.selectedSorting = this.sortData.find(entry => entry.value === defaultSortKey);
+        },
+
+        updateSorting()
         {
             ItemListService.setOrderBy(this.selectedSorting.value);
             ItemListService.getItemList();
         },
 
-        setSelectedValueByUrl: function()
+        setSelectedValueByUrl()
         {
-            var urlParams = UrlService.getUrlParams(document.location.search);
+            const urlParams = UrlService.getUrlParams(document.location.search);
 
             if (urlParams.sorting)
             {
-                for (var i in this.sortData)
+                for (const i in this.sortData)
                 {
                     if (this.sortData[i].value === urlParams.sorting)
                     {

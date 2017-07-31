@@ -1,5 +1,5 @@
 var ModalService        = require("services/ModalService");
-var APIService          = require("services/APIService");
+var APIService          = require("services/ApiService");
 var NotificationService = require("services/NotificationService");
 
 Vue.component("account-settings", {
@@ -95,15 +95,6 @@ Vue.component("account-settings", {
         {
             this.accountSettingsModal.hide();
             this.clearFields();
-        },
-
-        /**
-         * Get the current email address of the user
-         * @returns {*}
-         */
-        getEmail: function()
-        {
-            return this.userData.options[0].value;
         }
     }
 

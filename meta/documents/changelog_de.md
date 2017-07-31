@@ -1,5 +1,140 @@
 # Release Notes für Ceres
 
+## v1.3.2 (2017-07-26)
+
+### Hinzugefügt
+
+- In den Adressformularen für die Lieferländer DE und UK wurde das Feld **Telefon** hinzugefügt.
+
+### Geändert
+
+- Das Design für die Liste der Versandarten in der Kaufabwicklung wurde geändert.
+
+### Behoben
+
+- Die Mengeneingabe in der Einzelansicht eines Artikels, der Warenkorbvorschau und im Warenkorb berücksichtigt nun die Minimal- und Maximalbestellmenge eines Artikels.
+- Die Artikelbilder in der Bestellbestätigungsseite werden nun korrekt ausgegeben.
+
+### Bekannte Probleme
+
+- Artikelkategorien werden auch ohne verknüpfte Artikel im Webshop angezeigt.
+- Wenn ein Artikel öfter in den Warenkorb gelegt wird, als Warenbestand vorhanden ist, kommt eine `Bad Params` Fehlermeldung.
+
+## v1.3.1 (2017-07-24)
+
+### Hinzugefügt
+
+- Das Custom-Event `onVariationChanged` wurde hinzugefügt.
+- Bestellmerkmale vom Typ **Text** können nun mit Artikeln verknüpft werden. Diese werden in der Einzelansicht eines Artikels angezeigt (Hinweis: Zurzeit stehen für die Verwendung im Webshop **Ceres** nur Bestellmerkmale vom Typ **Text** zur Verfügung. Auch die Einordnung von Bestellmerkmalen in Merkmalgruppen ist bisher nicht möglich). Weitere Informationen zur Einrichtung von Bestellmerkmalen finden Sie im [Handbuch](https://knowledge.plentymarkets.com/omni-channel/online-shop/ceres-einrichten#340) und im [Forum](https://forum.plentymarkets.com/t/howto-bestellmerkmale-in-ceres-einrichten/63155). 
+- Beim Anlegen/Editieren von Adressen werden die Felder nun rot markiert, wenn vom Server eine Fehlermeldung für diese Felder kommt. Außerdem werden die Fehler ausgegeben anstatt "Validation errors".
+
+### Behoben
+
+- Wenn im Footer Kategorien verknüpft werden, werden diese nun sprachabhängig geladen.
+- Im **Mein Konto**-Bereich wird nun immer die E-Mail-Adresse des eingeloggten Shop-Besuchers angezeigt.
+
+## v1.3.0 (2017-07-13)
+
+### Hinzugefügt
+
+- Die Artikellisten die Ceres bereitstellt, sind nun dynamisch und jede Liste kann frei gesetzt werden.
+- Artikel können nun mit Hilfe von Tags in Artikellisten dargestellt werden.
+- Cross-Selling-Artikel können nun in Artikellisten dargestellt werden (nur in der Einzelansicht eines Artikels verfügbar).
+- In den Adressformularen für die Lieferländer DE und UK wurde das Feld **Titel** hinzugefügt.
+- Für die Seitennavigation und die Navigation oben wurde Caching implementiert.
+- Es ist nun möglich, den Aufbau der Artikel-URLs analog zum alten Webshop (z.B. Callisto 3.5) anzupassen. Dafür muss die Einstellung **Enable Callisto route pattern for items** im Tab **Global** der Konfiguration von Ceres aktiviert werden.
+
+### Geändert
+
+- Das Design des **In den Warenkorb**-Buttons in der Kategorieansicht wurde geändert.
+- Die Suche wird nun mit einer **UND**-Logik ausgeführt und ersetzt damit die vorherige **ODER**-Suche.
+- Das Icon für die Suche im Header ändert sich nun zu einem **X**, um dem Webshop-Besucher eindeutiger zu zeigen, wie man die Suche wieder schließt.
+- Die mobile Navigation wurde überarbeitet. Sie kann nun leichter bedient werden, da der Button zum Öffnen der Unterkategorien vergrößert wurde.
+- Das Addressfeld 2 wurde als Standardwert für das Adressformular des Lieferlandes UK hinzugefügt.
+- In der Zahlungsabwicklung wird standardmäßig die erste Adresse aus der Adressliste angezeigt.
+- In der Zahlungsabwicklung wird das Lieferland automatisch anhand der Lieferadresse gesetzt.
+- In der Zahlungsabwicklung kann man das Lieferland nicht mehr über das Menü im Header ändern.
+- Die Kategorieansicht wurde für mobile Geräte überarbeitet.
+
+### Behoben
+
+- Bei Artikeln werden nur noch die für den Mandanten aktivierten Bilder im Webshop angezeigt.
+- Die Seitennavigation zeigt nun wieder alle Kategorien sämtlicher Ebenen an.
+- In der Zahlungsabwicklung wird beim Wechseln der Lieferadresse nun automatisch die erste erlaubte Zahlungsart gewählt.
+- Der Name eines Artikels, der in der Kategorieansicht oder in einer Artikelliste angezeigt wird, wird nicht mehr nach 35 Zeichen abgeschnitten.
+
+
+## v1.2.10 (2017-07-05)
+
+### Hinzugefügt
+
+- Komplexe Sortierungen von Artikeln sind in Kategorieansicht und Suche über die Einstellung **Empfohlen** möglich. Bis zu drei Sortierwerte können im Tab **Pagination and Sorting** in der Konfiguration von Ceres verkettet werden. Bei aktiver Sortiereinstellung **Recommended** wird im Webshop die empfohlene Sortierung angezeigt.
+- Das Design für die Liste der Zahlungsarten in der Kaufabwicklung und beim Ändern der Zahlungsart im **Mein Konto**-Bereich wurde geändert. Eine Zahlungsart kann nun auch einen externen Link anzeigen.
+- Der Template-Container `ExtendOverlayButtons` wurde auf dem Overlay des Warenkorbs hinzugefügt.
+- Der Template-Container `AdditionalContentAfterButtons` wurde auf der Login-Seite hinzugefügt.
+- Der Template-Container `ExtendOverlayButtons` wurde auf dem Overlay der Login-Seite hinzugefügt.
+
+### Geändert
+
+- Im Modal zur Anzeige von Versandkosteninformationen wird nun der Inhalt aus dem Tab **Template** statt des Inhalts aus dem Tab **Beschreibung 1** der verknüpften Kategorie angezeigt. Durch diese Änderung kann nun auch Twig-Code ausgegeben werden.
+- In der Artikelansicht werden nun Preise sowie Einheiten nur noch einmal ausgegeben und zur Laufzeit aktualisiert.
+
+### Behoben
+
+- Durch einen Fehler wurde bei automatischer Befüllung des Adressformulars (Browser muss Form Autofill unterstützen) die Hausnummer nicht in das richtige Feld eingetragen.
+- Es wurde ein Fehler in der Berechnung von Rabatten behoben.
+- Durch einen Formatierungsfehler im Karussell der Vorschaubilder wurde der Rand rechts abgeschnitten. Dies wurde behoben.
+
+## v1.2.9 (2017-06-30)
+
+### Geändert
+
+- Das Design für die Liste der Zahlungsarten in der Kaufabwicklung wurde geändert. Eine Zahlungsart kann nun auch eine Kurzbeschreibung anzeigen.
+
+## v1.2.8 (2017-06-29)
+
+### Hinzugefügt
+
+- Im **Mein Konto**-Bereich kann nun die Zahlungsart eines Auftrags geändert werden, wenn die Zahlungsart dies zulässt.
+- Das Bilderkarussell kann nun auch für die Kategorieansicht aktiviert werden.
+- Der Template-Container `CategoryItem.SideNavBarBottom` wurde hinzugefügt, um in der Kategorieansicht eigene Inhalte unter der Seitennavigation anzuzeigen.
+- Die Artikel werden in der Kategorieansicht mit dem Zusatz "* inkl. ges. MwSt. zzgl. Versandkosten" ausgegeben.
+- Ein Modal zur Darstellung der Versandkosten wurde hinzugefügt. Die entsprechende Kategorie kann in der Konfiguration von **Ceres** im Tab **Global** mit dem Modal verknüpft werden.
+
+### Geändert
+
+- Das Bilderkarussell ist in der Einzelansicht eines Artikel nun auch für die Vorschaubilder verfügbar.
+- Alle Bilder, die in der Einzelansicht eines Artikels angezeigt werden, werden nun auf eine feste Größe skaliert.
+- Artikel sowie Kategorien ohne Übersetzung werden bei Auswahl der entsprechenden Sprache nichtmehr auf der Startseite angezeigt.
+- Das Bilderkarussell wurde in der Liste **Zuletzt angesehene Artikel** entfernt.
+- Das Bilderkarussell in der Kategorieansicht wird nur noch initialisiert, wenn der Artikel mehr als ein Bild hat.
+- Varianten ohne Bestand können nicht mehr in den Warenkorb gelegt werden.
+- Varianten ohne Bestand werden beim Aufruf auf die nächste kaufbare Variante umgeleitet.
+
+### Behoben
+
+- In der mobilen Ansicht schließt die Navigation jetzt wenn man die Kategorie wechselt.
+- Ein Fehler führte dazu, dass eine gelöschte Adresse nicht aus der Adressliste entfernt wurde. Dies wurde behoben.
+- Als Gast kann man im Checkout nur noch eine Rechnungsadresse sowie Lieferadresse speichern.
+- In der Einzelansicht werden keine inaktiven Varianten oder Varianten ohne Bestand im Dropdown angezeigt.
+
+## v1.2.7 (2017-06-22)
+
+### Hinzugefügt
+
+- Das Feld **Firma** wird jetzt standardmäßig im Adressformular angezeigt, wenn in der Anrede **Firma** ausgewählt wird.
+- Wenn das Feld **Firma** im Tab **Checkout and My account** in der Konfig deaktiviert ist, wird die Option **Firma** in der Anrede ausgeblendet.  
+
+### Geändert
+
+- Die Sortierung nach Preis wurde verbessert.
+- Verschiedene Einträge wurden aus den Sortierungsmöglichkeiten der Konfig entfernt.
+- Die Bezeichnungen der Sortiermöglichkeiten in der Konfig wurden an die Anzeige im Webshop angepasst.
+
+### Behoben
+
+- Im Adressformular ist bei der Anrede **Herr** vorausgewählt und wird im Dropdown nun auch angezeigt.
+
 ## v1.2.6 (2017-06-14)
 
 ### Geändert
@@ -11,16 +146,6 @@
 - Auf der Startseite verlinkt der Button **Alle anzeigen** der ersten Kategorieliste auf die richtige Kategorie.
 - Es wurde ein Fehler behoben, der bei der Auswahl des Landes im Formular der Rechnungsadresse das Lieferland wechselt.
 - Im Checkout ist die Verlinkung auf die AGB nun korrekt.
-
-### Bekannte Probleme
-
-- Adressen können aktuell durch einen sporadischen Fehler nicht editiert werden.
-- Im Adressformular ist bei der Anrede "Herr" vorausgewählt, dies wird im Dropdown aber nicht angezeigt.
-- Mit der Suche kann noch nicht nach Variantennummern gesucht werden.
-- Nicht aktive Varianten werden in der Einzelansicht des Artikels im Varianten-Dropdown angezeigt, können aber nicht ausgewählt werden.
-- Der Name eines Artikels, der in der Kategorieansicht oder in einer Artikelliste angezeigt wird, wird nach 35 Zeichen abgeschnitten und nicht umgebrochen.
-- In der mobilen Ansicht bleibt die Navigation geöffnet, wenn man die Kategorie wechselt.
-- Artikelkategorien werden auch ohne verküpfte Artikel im Webshop angezeigt.
 
 ## v1.2.5 (2017-06-08)
 

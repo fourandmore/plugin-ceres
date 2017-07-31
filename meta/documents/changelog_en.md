@@ -1,5 +1,139 @@
 # Release Notes for Ceres
 
+## v1.3.2 (2017-07-26)
+
+### Added
+
+- The **Phone number** field has been added to the address forms of the delivery countries DE and UK.
+
+### Changed
+
+- The design for the list of shipping methods in the checkout was updated.
+
+### Fixed
+
+- The quantity input in the single item view, the shopping cart preview and the shopping cart now takes  into account the minimum order quantity and the maximum order quantity of an item.
+- The item images on the order confirmation page are now displayed correctly.
+
+### Known issues
+
+- Categories of the **Item** type will be displayed in the online store even if no item is linked with this category.
+- If the quantity of an item added to the shopping cart exceeds the stock of the item, a `Bad Params` error message is shown.
+
+## v1.3.1 (2017-07-24)
+
+### Added
+
+- The custom event `onVariationChanged` has been added.
+- Order properties of the **Text** type can now be linked with items. These order properties will be displayed in the single item view (Note: Only order properties of the type **Text** are available in the **Ceres** online store at the moment. Furthermore, organising order properties in property groups is not yet possible). For further information about setting up order properties, refer to our [forum](https://forum.plentymarkets.com/t/howto-bestellmerkmale-in-ceres-einrichten/63155).
+- When creating/editing addresses, the text fields will be marked red if the server returns an error. Also, instead of a generic "Validation errors", the specific error message is shown.
+
+### Fixed
+
+- When linking categories in the footer, the content of these categories will now be displayed depending on the respective language.
+- The email address of a logged-in customer will be displayed in the **My account** area.
+
+## v1.3.0 (2017-07-13)
+
+### Added
+
+- Item lists provided by Ceres are now loaded dynamically and each list can be set independently.
+- Items can now be displayed in item lists with the help of tags.
+- Cross-selling items can now be displayed in item lists (only available in the single item view).
+- The **Title** field has been added to the address forms of the delivery countries DE and UK.
+- Caching has been implemented for the side navigation and the top navigation.
+- It is now possible to change the pattern of item URLs to match the pattern of the old online store (e.g. Callisto 3.5). To do so, activate the **Enable Callisto route pattern for items** setting in the **Global** tab of the Ceres configuration.
+
+### Changed
+
+- The design of the **Add to shopping cart** button in the category view has been changed.
+- The online store search will now use the **AND** operator. This replaces the **OR** search that was previously used.
+- The search icon in the header will now switch to an **X** when clicking the search to help the customer with closing the current search.
+- The mobile navigation has been refactored. Using the mobile navigation is now easier than before due to a larger button for opening sub-categories.
+- The address field 2 is now a default field of the address form of the delivery country UK.
+- The first address in the address list will now be displayed by default in the checkout.
+- The delivery country will now be set automatically based on the delivery address in the checkout.
+- On the checkout page, the delivery country cannot be changed in the header menu anymore.
+- The category view has been refactored for mobile devices.
+
+### Fixed
+
+- Only those item images activated for a client will be displayed in the respective online store.
+- The side navigation now displays the categories on every level again.
+- When changing the delivery country in the checkout, the first allowed payment method will now be selected automatically.
+- The name of an item displayed in the category view or an item list is not "cut off" after 35 characters and now wrapped.
+
+## v1.2.10 (2017-07-05)
+
+### Added
+
+- It is now possible to set up complex item sorting for the category view and the search by using the recommended sorting options. Up to three sorting values can be concatenated in th **Pagination and Sorting** tab of the Ceres configuration. With the sorting option **Recommended** enabled, recommended sorting will be displayed in the online store.
+- The design of the list of payment methods displayed in the checkout and in the overlay when changing a payment method in the **My Account** area has been updated. An external link can now be displayed by a payment plugin.
+- The template container `ExtendOverlayButtons` has been added to the shopping cart overlay.
+- The template container `AdditionalContentAfterButtons` has been added to the login page.
+- The template container `ExtendOverlayButtons` has been added to the overlay of the login page.
+
+### Changed
+
+- Instead of the **Description 1** tab, the content of the **Template** tab of a category is now used for displaying shipping information in a modal in the online store. Due to this change Twig code can also be rendered.
+- Prices and units are only displayed once in the single item view and updated dynamically.
+
+### Fixed
+
+- Due to an error the **House No.** field was not auto-filled (Auto-fill support of the browser required) correctly in the German address form. This has been fixed.
+- An error occurred when calculating discounts. This has been fixed.
+- Due to a formatting error in the image carousel for preview images, the right border was not visible. This has been fixed.
+
+## v1.2.9 (2017-06-30)
+
+### Changed
+
+- The design of the list of payment methods in the checkout has been changed. A payment method can now also display a short description.
+
+## v1.2.8 (2017-06-29)
+
+### Added
+
+- A payment method can be changed subsequently for an order in the **My account** area if this feature is enabled in the payment method.
+- The image carousel can now be enabled for the category view.
+- The `CategoryItem.SideNavBarBottom` template container has been added. This container allows you to add content below the side navigation bar in the category view.
+- The information text "* Incl. VAT excl. Shipping" is now displayed for each item in the category view.
+- A modal for displaying the shipping costs has been added. A category can be linked to this modal in the configuration of **Ceres** in the **Global** tab.
+
+### Changed
+
+- The image carousel is now also available for preview images in the single item view.
+- All images displayed in the single item view are now scaled to a fixed size.
+- Items as well as categories for which no translations are available are no longer displayed on the homepage after the respective language is selected.
+- The image carousel in the **Last seen items** list has been removed.
+- The image carousel in the category view will only be initialised for items with more than one linked image.
+- Variations that are out of stock cannot be added to the shopping cart anymore.
+- When selecting a variation that is out of stock the customer will be forwarded to the next variation with stock.
+
+### Fixed
+
+- In the mobile view, the navigation will now close after switching the category.
+- Due to an error, a deleted address was not removed from the address list. This has been fixed.
+- Only one invoice address and delivery address can be saved in the checkout when ordering as a guest.
+- In the single item view, inactive variations or variations that are out of stock will not be displayed.
+
+## v1.2.7 (2017-06-22)
+
+### Added
+
+- The **Company** field is shown in address forms as soon as **Company** is selected in the **Form of address** drop-down.
+- If the **Company** field is deactivated in the **Checkout and My account** tab in the config, the option **Company** is not shown in the **Form of address** drop-down.  
+
+### Changed
+
+- Sorting items by price has been improved.
+- Various entries have been removed from the sorting options in the config.
+- The names of sorting options in the config have been changed. They now equal the names of the sorting options in the online store.
+
+### Fixed
+
+- In the address form, the value **Mr.** is preselected in the form of address field and the value is now displayed in the drop-down.
+
 ## v1.2.6 (2017-06-14)
 
 ### Changed
@@ -11,16 +145,6 @@
 - The **Show all** button of the first category list on the homepage now references to the correct category.
 - Due to an error, the country of delivery in the invoice address form did not change when a different country was selected. This has been fixed.
 - The link for the **General terms and conditions** in the checkout now references the correct category.
-
-### Known issues
-
-- Due to a sporadically occurring error, addresses cannot be edited at the moment.
-- In the address form, the value "Mr." is preselected in the form of address field but the value is not displayed in the drop-down.
-- It is not possible to search for variation numbers.
-- Variations that are not active will be displayed in the variation drop-down in the single item view, but cannot be selected.
-- The name of an item displayed in the category view or an item list is "cut off" after 35 characters and not wrapped.
-_ In the mobile view, the navigation will remain open after switching the category.
-- Categories of the **Item** type will be displayed in the online store even if no item is linked with this category.
 
 ## v1.2.5 (2017-06-08)
 

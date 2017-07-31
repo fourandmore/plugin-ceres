@@ -4,13 +4,44 @@
 
 **Ceres** is the official template plugin for the default online store of plentymarkets 7. In the new online store for plentymarkets 7, design and logic are separated from each other. Two plugins are required to integrate the online store into your plentymarkets system. The **Ceres** plugin contains the new standard design of the online store and can be customised to meet your needs. The **IO** plugin contains the logic part of the online store, is a general basis for all design plugins and can also be used by other plugins. In this user guide you learn how to <a href="#10.">set up Ceres</a> and how to <a href="#20.">customise Ceres</a>.
 
-## Setting up Ceres in plentymarkets
+## Setting up Ceres in plentymarkets<a id="10."></a>
 
 You can make changes to your design by carrying out the design settings. No programming experience is required. To carry out the design settings, proceed as follows.
 
 <div class="alert alert-danger" role="alert">
     When deploying the online store plugin <b>Ceres</b> in <b>Productive</b>, the old plentymarkets online store will be unavailable. <b>Ceres</b> will use the URL of the online store.
 </div>
+
+### Carrying out global settings
+
+Carry out global settings that affect the entire template in the **Global** tab. For example, link a category to display information concerning your shipping costs in the online store. Create a category of the **Content** tab first.
+
+##### Creating a category:
+
+1. Go to **Item » Categories**. 
+2. Click on **New category**.<br /> → The **Create new category** window will open. 
+3. Enter a name for the category. 
+4. Select the category type. 
+5. Click on **Create**.<br /> → The new category will be created and displayed in the category tree. 
+6. Open the new category in the directory tree on the left. 
+7. Select **Content** from the **Type** drop-down menu. 
+8. Activate the **Client (store)**. 
+9. Click on the **Template** tab. 
+10. Enter the content that you wish to have displayed in the online store. 
+11. **Save** the settings.
+
+After saving the category settings, the **CategoryTemplates** plugin will be available in the **Plugin » Plugin overview** menu. This plugin needs to be linked to a client and deployed in Stage or Productive. Then, link the category in the configuration of the **Ceres** plugin.
+
+##### Carrying out global settings:
+
+1. Go to **Plugins » Plugin overview**.<br /> → The plugin overview will open. 
+2. Click on **Ceres**.<br /> → The plugin will open. 
+3. Click on **Configuration** in the directory tree.<br /> → The **Global** is pre-selected. 
+4. Click on **Search** under **Category to display shipping information**.<br /> → The **Categories** window will open. 
+5. Select a category to link this category for displaying information concerning shipping costs. 
+6. Click on **Select**. 
+7. **Save** the settings.<br /> → The category will be linked.
+
 
 ### Customising the default homepage
 
@@ -20,10 +51,11 @@ You can make changes to your design by carrying out the design settings. No prog
 
 1. Go to **Plugins » Plugin overview**.<br /> → The plugin overview will open. 
 2. Click on **Ceres**.<br /> → The plugin will open. 
-3. Click on **Configuration** in the directory tree.<br /> → The **Homepage** is pre-selected. 
-4. Deactivate the setting **Show default homepage**. 
-5. Carry out the settings. Pay attention to the information given in table 1. 
-6. **Save** the settings.<br /> → The default homepage is deactivated and your content will be displayed.
+3. Click on **Configuration** in the directory tree. 
+4. Click on the **Homepage** tab. 
+5. Deactivate the setting **Show default homepage**. 
+6. Carry out the settings. Pay attention to the information given in table 1. 
+7. **Save** the settings.<br /> → The default homepage is deactivated and your content will be displayed.
 
 <table>
 <thead>
@@ -54,12 +86,12 @@ You can make changes to your design by carrying out the design settings. No prog
 <td>Enter the URL of the item image. The image can be uploaded in the <strong>CMS » Webspace</strong> menu in the <strong>images</strong> folder. Alternatively, enter a http URL that leads to the image.</td>
 </tr>
 <tr>
-<td><b>ID of the category to display in the first category preview;<br />ID of the category to display in the second category preview;<br />ID of the category to display in the third category preview;<br />ID of the category to display in the fourth category preview</b></td>  
-<td>Enter the ID of a category of the <b>Item</b> type to display this category in the category preview. The preview image can be uploaded in the <strong>Documents</strong> tab of the category and must be set as image 1.</td>
+<td><b>Category to display in the first category preview;<br />Category to display in the second category preview;<br />Category to display in the third category preview;<br />Category to display in the fourth category preview</b></td>  
+<td>Link a category of the <b>Item</b> type to display this category in the category preview. The preview image can be uploaded in the <strong>Documents</strong> tab of the category and must be set as image 1.</td>
 </tr>
 <tr>
-<td><b>ID of the category to display in the first list of items;<br />ID of the category to display in the second list of items</b></td>  
-<td>Enter the ID of a category of the <b>Item</b> type to display a list of items on the homepage.</td>
+<td><b>Category to display in the first list of items;<br />Category to display in the second list of items</b></td>  
+<td>Link a category of the <b>Item</b> type to display a list of items on the homepage.</td>
 </tr>
 </tbody>
 <caption>Table 1: Customising the default homepage</caption>
@@ -173,10 +205,7 @@ Customise the design of the item view in the **Item view** tab. Select the item 
 <th>Explanation</th> 
 </tr>
 </thead>
-<tbody>
-<tr>
-<td colspan="2" class="th">Tab: Item view</td>  
-</tr> 
+<tbody> 
 <tr>
 <td><b>Item name</b></td>  
 <td>Select <strong>Name 1</strong>, <strong>Name 2</strong> or <strong>Name 3</strong>. Texts for these fields are saved in the <strong><a href="{% Link(3177) %}#50.">Texts</a></strong> tab of the item. If <strong>Name 2</strong> or <strong>Name 3</strong> is selected, but no name was saved in the text field, <strong>Name 1</strong> will be used as the item name.</td>
@@ -194,6 +223,10 @@ Customise the design of the item view in the **Item view** tab. Select the item 
 <td>Display variations by type in the item overview of a category.<br /> <strong>All</strong> = Select to display main variations and variations of items.<br /> <strong>Only main variations</strong> = Select to display only main variations.<br /> <strong>Only child variations</strong> = Select to display only variations. Main variations will not be displayed.</td>
 </tr>
 <tr>
+<td><b>Enable image carousel in category item list</b></td>  
+<td>Activate to display the image carousel in the category view.</td>
+</tr>
+<tr>
 <td><b>Show image carousel dots in category item list</b></td>  
 <td>Activate to display dots below the image carousel of an item in the category view.</td>
 </tr>
@@ -205,16 +238,72 @@ Customise the design of the item view in the **Item view** tab. Select the item 
 <td><b>Loading animation</b></td>  
 <td>Select a loading animation for the category view.<br /> <strong>Blur</strong> = The category view will be blurred for a short period of time when loading.<br /> <strong>Bars</strong> = When loading the category view, a loading animation with bars will be displayed.<br /> <strong>Spinner</strong> = When loading the category view, a loading animation with a spinner will be displayed.</td>
 </tr>
-<tr>
-<td colspan="2" class="th">Tab: Item lists</td>  
-</tr>
- <tr>
-<td><b>Number of last seen items</b></td>  
-<td>Select the number of last seen items.</td>
-</tr>
 </tbody>
 <caption>Table 3: Customising the item view</caption>
 </table>
+
+### Setting up item lists
+
+Items can be grouped in item lists and highlighted on the homepage of the online store and in the single item view. The following item lists can be set up in Ceres:
+
+* Store specials: New items, special offers, etc. are displayed in Ceres with the help of tags. For further information, refer to the [Adding tags to items](https://www.plentymarkets.co.uk/manual/item/managing-items/#150.) chapter. 
+* Cross-selling Cross-selling items are displayed in the online store using **relations**. For further information, refer to the [Setting up cross-selling](https://www.plentymarkets.co.uk/manual/item/managing-items/#950.) chapter. 
+* Last seen items: A list of items last seen by the customer is displayed. Display item lists in a very convenient way in your online store by using template containers. First, set up the item lists.
+
+##### Setting up item lists:
+
+1. Go to **Plugins » Plugin overview**.<br /> → The plugin overview will open. 
+2. Click on **Ceres**.<br /> → The plugin will open. 
+3. Click on **Configuration** in the directory tree. 
+4. Click on the **Item lists** tab. 
+5. Carry out the settings. Pay attention to the information given in table 4. 
+6. **Save** the settings.
+
+<table>
+<thead>
+<tr>  
+<th>Setting</th>
+<th>Explanation</th> 
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>Last seen: Number of last seen items</b></td>  
+<td>Select the number of last seen items.</td>
+</tr>
+<tr>
+<td><b>Cross-selling: Cross-selling relation</b></td>  
+<td>Select the relation for cross-selling items. Items with this relation will be displayed in an item list of the <b>Cross-selling</b> type. <br /><b>Similar</b> = The selected items are similar to the opened item. <br /><b>Accessory</b> = The selected items are accessories of the opened item. <br /><b>Replacement part</b> = The selected items are replacement parts for the opened item. <br /><b>Collection</b> = The selected items are suitable to be sold as a bundle together with the opened item.</td>
+</tr>
+<tr>
+<td><b>First item list; <br />Second item list; <br />Third item list</b></td>  
+<td>Select the type of the item list. <br /><b>Last seen</b> = A list of last seen items is displayed in the online store. <br /><b>Cross-selling</b> = A list of cross-selling items with the selected relation is displayed in the online store. <br /><b>Tags</b> = A list of items of the linked tags is displayed in the online store.</td>
+</tr>
+<tr>
+<td><b>Name of the first item list (DE); <br />Name of the second item list (DE); <br />Name of the third item list (DE)</b></td>  
+<td>Enter the name of the item list for the German online store. This name is optional for item lists of the <b>Last seen</b> and <b>Cross-selling</b> types.</td>
+</tr>
+<tr>
+<td><b>Name of the first item list (EN); <br />Name of the second item list (EN); <br />Name of the third item list (EN)</b></td>  
+<td>Enter the name of the item list for the English online store. This name is optional for item lists of the <b>Last seen</b> and <b>Cross-selling</b> types.</td>
+</tr>
+<tr>
+<td><b>List of IDs of tags to display in the first item list; <br />List of IDs of tags to display in the second item list; <br />List of IDs of tags to display in the third item list</b></td>  
+<td>Enter the IDs of tags to display items linked to these tags in an item list of the <b>Tags</b> type. <br /> <b><i>Note:</i></b> Multiple IDs must be separated by commas.</td>
+</tr>
+</tbody>
+<caption>Table 4: Setting up item lists</caption>
+</table>
+
+
+Proceed as follows to link the item list for last seen items with the item view of your online store. Link other item lists the same way.
+
+##### Linking an item list:
+
+1. Go to **Plugins » Content**. 
+2. Go to the **First item list** area. <br /> → The type **Last seen** is preset for the first item list by default. 
+3. Select one, several or **ALL** containers in which you want to display your item list, e.g. **Homepage: Container 7**, **Homepage: Container 9** or **Single item: Container for item lists**. 
+4. **Save** the settings.<br /> → The item list will be displayed in the selected containers in the online store.
 
 ### Customising the shopping cart
 
@@ -227,7 +316,7 @@ Customise the display options of the shopping cart in the **Shopping cart** tab.
 2. Click on **Ceres**.<br /> → The plugin will open. 
 3. Click on **Configuration** in the directory tree. 
 4. Click on the **Shopping cart** tab. 
-5. Carry out the settings. Pay attention to the information given in table 4. 
+5. Carry out the settings. Pay attention to the information given in table 5. 
 6. **Save** the settings.
 
 <table>
@@ -255,11 +344,11 @@ Customise the display options of the shopping cart in the **Shopping cart** tab.
 <td>Activate to display the <strong>Change variation</strong> button in the item overview in the shopping cart. By clicking on <strong>Change variation</strong>, customers can change an item's variation in the shopping cart. If you activate the <strong>Change variation</strong> button, but the item has no variations, the button will not be displayed.</td>
 </tr>    
  <tr>
- <td><b>Add to shopping cart: Show information</b></td>  
-<td>Select wether to show the overlay of the shopping cart or the shopping cart preview after clicking on the <strong>Add to shopping cart</strong> button.<br /> <strong>Show overlay</strong> = Display an overlay.<br /> <strong>Toggle shopping cart preview</strong> = Toggle the shopping cart preview.<br /> <strong>No information</strong> = Don't show any information.</td>
+<td><b>Add to shopping cart: Show information</b></td>  
+<td>Select whether to show the overlay of the shopping cart or toggle the shopping cart preview after clicking on the <strong>Add to shopping cart</strong> button.<br /> <strong>Show overlay</strong> = Display an overlay of the shopping cart.<br /> <strong>Toggle shopping cart preview</strong> = Toggle the shopping cart preview.<br /> <strong>No information</strong> = Do not show any information.</td>
 </tr>
 </tbody>
-<caption>Table 4: Customising the shopping cart</caption>
+<caption>Table 5: Customising the shopping cart</caption>
 </table>
 
 ### Customising the checkout and the My account area
@@ -281,7 +370,7 @@ Customise the display options of the checkout in the **Checkout and My account**
 2. Click on **Ceres**.<br /> → The plugin will open. 
 3. Click on **Configuration** in the directory tree. 
 4. Click on the **Checkout and My account** tab. 
-5. Carry out the settings. Pay attention to the information given in table 5. 
+5. Carry out the settings. Pay attention to the information given in table 6. 
 6. **Save** the settings.
 
 <table>
@@ -293,39 +382,42 @@ Customise the display options of the checkout in the **Checkout and My account**
 </thead>
 <tbody>
 <tr>
+<td><strong>Allow customer to change the payment method</strong></td><td>Activate to allow customers to change the payment method after the checkout. If deactivated, any change is impossible. <strong><i>Note:</i></strong> This setting is activated by default.</td>
+</tr>
+<tr>
 <td><b>Show invoice address fields in address form (DE)</b></td>  
-<td>Select one, multiple or <strong>ALL</strong> address fields to be displayed in the address form for the country of delivery <b>Germany</b> of the checkout.<br /> <strong>Company</strong> = Activate to display the <strong>Company</strong> field.<br /> <strong>VAT number</strong> = Activate to display the <strong>VAT number</strong> field.<br /> <strong>Form of address</strong> = Activate to display the <strong>Form of address</strong> field.<br /> <strong>Title</strong> = Activate to display the <strong>Title</strong> field.<br /> <strong>Date of birth</strong> = Activate to display the <strong>Date of birth</strong> field. <br /> <strong>Name affix</strong> = Activate to display the <strong>Name affix</strong> field. <br /> <strong>Additional address 1</strong> = Activate to display the <strong>Additional address information 1</strong> field.<br /> <strong>Additional address 2</strong> = Activate to display the <strong>Additional address information 2</strong> field. <br /> <strong>State</strong> = Activate to display the <strong>State</strong> field.
+<td>Select one, multiple or <strong>ALL</strong> address fields to be displayed in the address form for the country of delivery <b>Germany</b> of the checkout.<br /> <strong>Company</strong> = Activate to display the <strong>Company</strong> field.<br /> <strong>VAT number</strong> = Activate to display the <strong>VAT number</strong> field.<br /> <strong>Form of address</strong> = Activate to display the <strong>Form of address</strong> field.<br /> <strong>Title</strong> = Activate to display the <strong>Title</strong> field.<br /> <strong>Date of birth</strong> = Activate to display the <strong>Date of birth</strong> field. <br /> <strong>Name affix</strong> = Activate to display the <strong>Name affix</strong> field. <br /> <strong>Phone number</strong> = Activate to display the <strong>Phone number</strong> field. <br /> <strong>Additional address 1</strong> = Activate to display the <strong>Additional address information 1</strong> field.<br /> <strong>Additional address 2</strong> = Activate to display the <strong>Additional address information 2</strong> field. <br /> <strong>State</strong> = Activate to display the <strong>State</strong> field.
 </tr>
 <tr>
 <td><b>Enable invoice address field validation (DE)</b></td>  
-<td>Select one, multiple or <strong>ALL</strong> address fields to validate these fields when entering the address.<br /> <strong>Company</strong> = Activate to validate the <strong>Company</strong> field.<br /> <strong>VAT number</strong> = Activate to validate the <strong>VAT number</strong> field.<br /> <strong>Form of address</strong> = Activate to validate the <strong>Form of address</strong> field.<br /> <strong>Title</strong> = Activate to validate the <strong>Title</strong> field.<br /> <strong>Date of birth</strong> = Activate to validate the <strong>Date of birth</strong> field. <br /> <strong>Name affix</strong> = Activate to validate the <strong>Name affix</strong> field. <br /> <strong>Additional address 1</strong> = Activate to validate the <strong>Additional address information 1</strong> field.<br /> <strong>Additional address 2</strong> = Activate to validate the <strong>Additional address information 2</strong> field.<br /> <strong>State</strong> = Activate to validate the <strong>State</strong> field.
+<td>Select one, multiple or <strong>ALL</strong> address fields to validate these fields when entering the address.<br /> <strong>Company</strong> = Activate to validate the <strong>Company</strong> field.<br /> <strong>VAT number</strong> = Activate to validate the <strong>VAT number</strong> field.<br /> <strong>Form of address</strong> = Activate to validate the <strong>Form of address</strong> field.<br /> <strong>Title</strong> = Activate to validate the <strong>Title</strong> field.<br /> <strong>Date of birth</strong> = Activate to validate the <strong>Date of birth</strong> field. <br /> <strong>Name affix</strong> = Activate to validate the <strong>Name affix</strong> field. <br /> <strong>Phone number</strong> = Activate to validate the <strong>Phone number</strong> field. <br /> <strong>Additional address 1</strong> = Activate to validate the <strong>Additional address information 1</strong> field.<br /> <strong>Additional address 2</strong> = Activate to validate the <strong>Additional address information 2</strong> field.<br /> <strong>State</strong> = Activate to validate the <strong>State</strong> field.
 </tr>
 <tr>
 <td><b>Show delivery address fields in address form (DE)</b></td>  
-<td>Select one, multiple or <strong>ALL</strong> address fields to be displayed in the address form for the country of delivery <b>Germany</b> of the checkout.<br /> <strong>Company</strong> = Activate to display the <strong>Company</strong> field.<br /> <strong>Form of address</strong> = Activate to display the <strong>Form of address</strong> field.<br /> <strong>Title</strong> = Activate to display the <strong>Title</strong> field. <br /> <strong>Name affix</strong> = Activate to display the <strong>Name affix</strong> field. <br /> <strong>Additional address 1</strong> = Activate to display the <strong>Additional address information 1</strong> field.<br /> <strong>Additional address 2</strong> = Activate to display the <strong>Additional address information 2</strong> field.<br /> <strong>State</strong> = Activate to display the <strong>State</strong> field.
+<td>Select one, multiple or <strong>ALL</strong> address fields to be displayed in the address form for the country of delivery <b>Germany</b> of the checkout.<br /> <strong>Company</strong> = Activate to display the <strong>Company</strong> field.<br /> <strong>Form of address</strong> = Activate to display the <strong>Form of address</strong> field.<br /> <strong>Title</strong> = Activate to display the <strong>Title</strong> field. <br /> <strong>Name affix</strong> = Activate to display the <strong>Name affix</strong> field. <br /> <strong>Phone number</strong> = Activate to display the <strong>Phone number</strong> field. <br /> <strong>Additional address 1</strong> = Activate to display the <strong>Additional address information 1</strong> field.<br /> <strong>Additional address 2</strong> = Activate to display the <strong>Additional address information 2</strong> field.<br /> <strong>State</strong> = Activate to display the <strong>State</strong> field.
 </tr>
 <tr>
 <td><b>Enable delivery address field validation (DE)</b></td>  
-<td>Select one, multiple or <strong>ALL</strong> address fields to validate these fields when entering the address.<br /> <strong>Company</strong> = Activate to validate the <strong>Company</strong> field.<br /> <strong>Form of address</strong> = Activate to validate the <strong>Form of address</strong> field.<br /> <strong>Title</strong> = Activate to validate the <strong>Title</strong> field. <br /> <strong>Name affix</strong> = Activate to validate the <strong>Name affix</strong> field. <br /> <strong>Additional address 1</strong> = Activate to validate the <strong>Additional address information 1</strong> field.<br /> <strong>Additional address 2</strong> = Activate to validate the <strong>Additional address information 2</strong> field.<br /> <strong>State</strong> = Activate to validate the <strong>State</strong> field.
+<td>Select one, multiple or <strong>ALL</strong> address fields to validate these fields when entering the address.<br /> <strong>Company</strong> = Activate to validate the <strong>Company</strong> field.<br /> <strong>Form of address</strong> = Activate to validate the <strong>Form of address</strong> field.<br /> <strong>Title</strong> = Activate to validate the <strong>Title</strong> field. <br /> <strong>Name affix</strong> = Activate to validate the <strong>Name affix</strong> field. <br /> <strong>Phone number</strong> = Activate to validate the <strong>Phone number</strong> field. <br /> <strong>Additional address 1</strong> = Activate to validate the <strong>Additional address information 1</strong> field.<br /> <strong>Additional address 2</strong> = Activate to validate the <strong>Additional address information 2</strong> field.<br /> <strong>State</strong> = Activate to validate the <strong>State</strong> field.
 </tr>
 <tr>
 <td><b>Show invoice address fields in address form (UK)</b></td>  
-<td>Select one, multiple or <strong>ALL</strong> address fields to be displayed in the address form for the country of delivery <b>United Kingdom</b> of the checkout.<br /> <strong>Company</strong> = Activate to display the <strong>Company</strong> field.<br /> <strong>VAT number</strong> = Activate to display the <strong>VAT number</strong> field.<br /> <strong>Form of address</strong> = Activate to display the <strong>Form of address</strong> field.<br /> <strong>Title</strong> = Activate to display the <strong>Title</strong> field.<br /> <strong>Date of birth</strong> = Activate to display the <strong>Date of birth</strong> field. <br /> <strong>Name affix</strong> = Activate to display the <strong>Name affix</strong> field. <!--br /><strong>Address 2</strong> = Activate to display the <strong>Address 2</strong> field.<--> <br /> <strong>Address 3</strong> = Activate to display the <strong>Address 3</strong> field.<br /> <strong>Address 4</strong> = Activate to display the <strong>Address 4</strong> field. <!--br /> <strong>County</strong> = Aktivieren, um das Feld <strong>County</strong> anzuzeigen.<-->
+<td>Select one, multiple or <strong>ALL</strong> address fields to be displayed in the address form for the country of delivery <b>United Kingdom</b> of the checkout.<br /> <strong>Company</strong> = Activate to display the <strong>Company</strong> field.<br /> <strong>VAT number</strong> = Activate to display the <strong>VAT number</strong> field.<br /> <strong>Form of address</strong> = Activate to display the <strong>Form of address</strong> field.<br /> <strong>Title</strong> = Activate to display the <strong>Title</strong> field.<br /> <strong>Date of birth</strong> = Activate to display the <strong>Date of birth</strong> field. <br /> <strong>Name affix</strong> = Activate to display the <strong>Name affix</strong> field. <br /> <strong>Phone number</strong> = Activate to display the <strong>Phone number</strong> field. <br /> <strong>Address 2</strong> = Activate to display the <strong>Address 2</strong> field.<br /> <strong>Address 3</strong> = Activate to display the <strong>Address 3</strong> field.<br /> <strong>Address 4</strong> = Activate to display the <strong>Address 4</strong> field. <!--br /> <strong>County</strong> = Aktivieren, um das Feld <strong>County</strong> anzuzeigen.<-->
 </tr>
 <tr>
 <td><b>Enable invoice address field validation (UK)</b></td>  
-<td>Select one, multiple or <strong>ALL</strong> address fields to validate these fields when entering the address.<br /> <strong>Company</strong> = Activate to validate the <strong>Company</strong> field.<br /> <strong>VAT number</strong> = Activate to validate the <strong>VAT number</strong> field.<br /> <strong>Form of address</strong> = Activate to validate the <strong>Form of address</strong> field.<br /> <strong>Title</strong> = Activate to validate the <strong>Title</strong> field.<br /> <strong>Date of birth</strong> = Activate to validate the <strong>Date of birth</strong> field. <br /> <strong>Name affix</strong> = Activate to validate the <strong>Name affix</strong> field. <!--br /> <strong>Address 2</strong> = Activate to validate the <strong>Address 2</strong> field.<--><br /> <strong>Address 3</strong> = Activate to validate the <strong>Address 3</strong> field.<br /> <strong>Address 4</strong> = Activate to validate the <strong>Address 4</strong> field.<!--br /> <strong>County</strong> = Aktivieren, um das Feld <strong>County</strong> zu validieren.<-->
+<td>Select one, multiple or <strong>ALL</strong> address fields to validate these fields when entering the address.<br /> <strong>Company</strong> = Activate to validate the <strong>Company</strong> field.<br /> <strong>VAT number</strong> = Activate to validate the <strong>VAT number</strong> field.<br /> <strong>Form of address</strong> = Activate to validate the <strong>Form of address</strong> field.<br /> <strong>Title</strong> = Activate to validate the <strong>Title</strong> field.<br /> <strong>Date of birth</strong> = Activate to validate the <strong>Date of birth</strong> field. <br /> <strong>Name affix</strong> = Activate to validate the <strong>Name affix</strong> field. <br /> <strong>Phone number</strong> = Activate to validate the <strong>Phone number</strong> field. <br /> <strong>Address 2</strong> = Activate to validate the <strong>Address 2</strong> field.<br /> <strong>Address 3</strong> = Activate to validate the <strong>Address 3</strong> field.<br /> <strong>Address 4</strong> = Activate to validate the <strong>Address 4</strong> field.<!--br /> <strong>County</strong> = Aktivieren, um das Feld <strong>County</strong> zu validieren.<-->
 </tr>
 <tr>
 <td><b>Show delivery address fields in address form (UK)</b></td>  
-<td>Select one, multiple or <strong>ALL</strong> address fields to be displayed in the address form for the country of delivery <b>United Kingdom</b> of the checkout.<br /> <strong>Company</strong> = Activate to display the <strong>Company</strong> field.<br /> <strong>Form of address</strong> = Activate to display the <strong>Form of address</strong> field.<br /> <strong>Title</strong> = Activate to display the <strong>Title</strong> field. <br /> <strong>Name affix</strong> = Activate to display the <strong>Name affix</strong> field. <!--br /> <strong>Address 2</strong> = Activate to display the <strong>Address 2</strong> field.<--><br /> <strong>Address 3</strong> = Activate to display the <strong>Address 3</strong> field.<br /> <strong>Address 4</strong> = Activate to display the <strong>Address 4</strong> field.<!--br /> <strong>County</strong> = Aktivieren, um das Feld <strong>County</strong> anzuzeigen.<-->
+<td>Select one, multiple or <strong>ALL</strong> address fields to be displayed in the address form for the country of delivery <b>United Kingdom</b> of the checkout.<br /> <strong>Company</strong> = Activate to display the <strong>Company</strong> field.<br /> <strong>Form of address</strong> = Activate to display the <strong>Form of address</strong> field.<br /> <strong>Title</strong> = Activate to display the <strong>Title</strong> field. <br /> <strong>Name affix</strong> = Activate to display the <strong>Name affix</strong> field. <br /> <strong>Phone number</strong> = Activate to display the <strong>Phone number</strong> field. <br /> <strong>Address 2</strong> = Activate to display the <strong>Address 2</strong> field.<br /> <strong>Address 3</strong> = Activate to display the <strong>Address 3</strong> field.<br /> <strong>Address 4</strong> = Activate to display the <strong>Address 4</strong> field.<!--br /> <strong>County</strong> = Aktivieren, um das Feld <strong>County</strong> anzuzeigen.<-->
 </tr>
 <tr>
 <td><b>Enable delivery address field validation (UK)</b></td>  
-<td>Select one, multiple or <strong>ALL</strong> address fields to validate these fields when entering the address.<br /> <strong>Company</strong> = Activate to validate the <strong>Company</strong> field.<br /> <strong>Form of address</strong> = Activate to validate the <strong>Form of address</strong> field.<br /> <strong>Title</strong> = Activate to validate the <strong>Title</strong> field. <br /> <strong>Name affix</strong> = Activate to validate the <strong>Name affix</strong> field. <!--br /> <strong>Address 2</strong> = Activate to validate the <strong>Address 2</strong> field.<--><br /> <strong>Address 3</strong> = Activate to validate the <strong>Address 3</strong> field.<br /> <strong>Address 4</strong> = Activate to validate the <strong>Address 4</strong> field. <!--strong>County</strong> = Aktivieren, um das Feld <strong>County</strong> zu validieren.<-->
+<td>Select one, multiple or <strong>ALL</strong> address fields to validate these fields when entering the address.<br /> <strong>Company</strong> = Activate to validate the <strong>Company</strong> field.<br /> <strong>Form of address</strong> = Activate to validate the <strong>Form of address</strong> field.<br /> <strong>Title</strong> = Activate to validate the <strong>Title</strong> field. <br /> <strong>Name affix</strong> = Activate to validate the <strong>Name affix</strong> field. <br /> <strong>Phone number</strong> = Activate to validate the <strong>Phone number</strong> field. <br /> <strong>Address 2</strong> = Activate to validate the <strong>Address 2</strong> field.<br /> <strong>Address 3</strong> = Activate to validate the <strong>Address 3</strong> field.<br /> <strong>Address 4</strong> = Activate to validate the <strong>Address 4</strong> field.<!--br /> <strong>County</strong> = Aktivieren, um das Feld <strong>County</strong> zu validieren.<-->
 </tr>
 </tbody>
-<caption>Table 5: Customising the checkout</caption>
+<caption>Table 6: Customising the checkout</caption>
 </table>
 
 ### Customising the pagination and sorting
@@ -339,7 +431,7 @@ Customise the pagination of the item overview and the online store's item sortin
 2. Click on **Ceres**.<br /> → The plugin will open. 
 3. Click on **Configuration** in the directory tree. 
 4. Open the **Pagination and sorting** tab. 
-5. Carry out the settings. Pay attention to the information given in table 6. 
+5. Carry out the settings. Pay attention to the information given in table 7. 
 6. **Save** the settings.
 
 <table>
@@ -372,15 +464,27 @@ Customise the pagination of the item overview and the online store's item sortin
 </tr>  
 <tr>
 <td><b>Enable item sorting by</b></td>
-<td>Activate one, several or <strong>ALL</strong> sorting options for item sorting.<br /> <strong>Item ID (ascending)</strong> = Sort items by item ID in ascending order.<br /> <strong>Item ID (descending)</strong> = Sort items by item ID in descending order.<br /> <strong>Item name (ascending)</strong> = Sort items in alphabetical order by item name (A-Z).<br /> <strong>Item name (descending)</strong> = Sort items in alphabetical order by item name (Z-A).<br /> <strong>Item position (ascending)</strong> = Display items with the highest position number first.<br /> <strong>Item position (descending)</strong> = Display items with the lowest position number first.<br /> <b><i>Important</i></b>: In order for this function to work, a position number has to be saved for each of the item variations within the variation tab.<br /> <strong>Price (ascending)</strong> = Display items with the lowest price first.<br /> <strong>Price (descending)</strong> = Display items with the highest price first.<br /> <strong>Customer feedback (ascending)</strong> = Display items with the lowest customer feedback first.<br /> <strong>Customer feedback (descending)</strong> = Display items with the highest customer feedback first.<br /> <strong>Newest variation</strong> = Display the newest item variations first.<br /> <strong>Oldest variation</strong> = Display the oldest item variations first.<br /> <strong>Variation ID (ascending)</strong> = Sort item variations by variation ID in ascending order.<br /> <strong>Variation ID (descending)</strong> = Sort item variations by variation ID in descending order.<br /> <strong>Variation number (ascending)</strong> = Sort item variations by variation number in ascending order.<br /> <strong>Variation number (descending)</strong> = Sort item variations by variation number in descending order.<br /> <strong>Last variation update</strong> = Display the last updated item variation first.<br /> <strong>First variation update</strong> = Display the first updated item variation first.<br /> <strong>Variation name (ascending)</strong> = Sort item variations in alphabetical order by variation name (A-Z).<br /> <strong>Variation name (descending)</strong> = Sort item variations in alphabetical order by variation name (Z-A).<br /> <strong>Variation position (ascending)</strong> = Display item variation with the highest position number first.<br /> <strong>Variation position (descending)</strong> = Display item variation with the lowest position number first.<br /> <b><i>Important</i></b>: In order for this function to work, a position number has to be saved for each of the item variations within the variation tab.<br /> <strong>Active variation (ascending)</strong> = Sort active item variations in ascending order.<br /> <strong>Active variation (descending)</strong> = Sort active item variations in descending order.<br /> <strong>Main variation (ascending)</strong> = Sort main item variations in ascending order.<br /> <strong>Main variation (descending)</strong> = Sort main item variations in descending order.<br /> <strong>Manufacturer (ascending)</strong> = Sort items in alphabetical order by manufacturer (A-Z).<br /> <strong>Manufacturer (descending)</strong> = Sort items in alphabetical order by manufacturer (Z-A).<br /> <strong>Random items</strong> = Display items in a different, randomly chosen order every time.
+<td>Activate one, several or <strong>ALL</strong> sorting options for item sorting.<br /> <strong>Item name A-Z</strong> = Sort items in alphabetical order by item name (A-Z).<br /> <strong>Item name Z-A</strong> = Sort items in alphabetical order by item name (Z-A).<br /> <strong>Price ⬆</strong> = Display items with the lowest price first.<br /> <strong>Price ⬇</strong> = Display items with the highest price first.<br /> <strong>Newest variation</strong> = Display the newest item variations first.<br /> <strong>Oldest variation</strong> = Display the oldest item variations first.<br /> <strong>Availability ⬆</strong> = Display item variations by availability in ascending order.<br /> <strong>Availability ⬇</strong> = Display item variations by availability in descending order.<br /> <strong>Variation number ⬆</strong> = Sort item variations by variation number in ascending order.<br /> <strong>Variation number ⬇</strong> = Sort item variations by variation number in descending order.<br /> <strong>Last update</strong> = Display the last updated item variation first.<br /> <strong>First update</strong> = Display the first updated item variation first.<br /> <strong>Manufacturer A-Z</strong> = Sort items in alphabetical order by manufacturer (A-Z).<br /> <strong>Manufacturer Z-A</strong> = Sort items in alphabetical order by manufacturer (Z-A).
 </td>
 </tr>
 <tr>
-<td><b>Default item sorting by</b></td>  
-<td>Select the entry that is selected by default for item sorting.</td>
+<td><b>Default sorting value for category view</b></td>  
+<td>Select the entry that is selected by default for item sorting in the category view.</td>
+</tr>
+<tr>
+<td><b>Recommended item sorting: First sorting value;<br />Second sorting value;<br />Third sorting value</b></td>  
+<td>Select the value for the recommended item sorting in the category view. Up to three values can be concatenated.<br /> <strong>Not selected</strong> = Select no value.<br /> <strong>Item ID ⬆</strong> = Sort items by item ID in ascending order.<br /> <strong>Item ID ⬇</strong> = Sort items by item ID in descending order.<br /> <strong>Item name A-Z</strong> = Sort items in alphabetical order by item name (A-Z).<br /> <strong>Item name Z-A</strong> = Sort items in alphabetical order by item name (Z-A).<br /> <strong>Item position ⬆</strong> = Display items with the highest position number first.<br /> <strong>Item position ⬇</strong> = Display items with the lowest position number first.<br /> <b><i>Important</i></b>: In order for this function to work, a position number has to be saved for each of the item variations within the variation tab.<br /> <strong>Price ⬆</strong> = Display items with the lowest price first.<br /> <strong>Price ⬇</strong> = Display items with the highest price first.<br /> <strong>Newest variation</strong> = Display the newest item variations first.<br /> <strong>Oldest variation</strong> = Display the oldest item variations first.<br /> <strong>Variation ID ⬆</strong> = Sort item variations by variation ID in ascending order.<br /> <strong>Variation ID ⬇</strong> = Sort item variations by variation ID in descending order.<br /> <strong>Variation number ⬆</strong> = Sort item variations by variation number in ascending order.<br /> <strong>Variation number ⬇</strong> = Sort item variations by variation number in descending order.<br /> <strong>Availability ⬆</strong> = Display item variations by availability in ascending order.<br /> <strong>Availability ⬇</strong> = Display item variations by availability in descending order.<br /> <strong>Last update</strong> = Display the last updated item variation first.<br /> <strong>First update</strong> = Display the first updated item variation first.<!--br /> <strong>Variation name A-Z</strong> = Artikelvarianten alphabetisch aufsteigend nach Name sortieren.<br /> <strong>Variation name Z-A</strong> = Artikelvarianten alphabetisch absteigend nach Name sortieren.<--><br /> <strong>Variation position ⬆</strong> = Display item variation with the highest position number first.<br /> <strong>Variation position ⬇</strong> = Display item variation with the lowest position number first.<br /> <b><i>Important</i></b>: In order for this function to work, a position number has to be saved for each of the item variations within the variation tab.<!--br /> <strong>Active variation ⬆</strong> = Aktive Artikelvarianten aufsteigend sortieren.<br /> <strong>Active variation ⬇</strong> = Aktive Artikelvarianten absteigend sortieren.<br /> <strong>Main variation ⬆</strong> = Hauptvarianten aufsteigend sortieren.<br /> <strong>Main variation ⬇</strong> = Hauptvarianten absteigend sortieren.<--><br /> <strong>Manufacturer A-Z</strong> = Sort items in alphabetical order by manufacturer (A-Z).<br /> <strong>Manufacturer Z-A</strong> = Sort items in alphabetical order by manufacturer (Z-A).<br /> <strong>Manufacturer position ⬆</strong> = Sort items by manufacturer position in ascending order.<br /> <strong>Manufacturer position ⬇</strong> = Sort items by manufacturer position in descending order.</td>
+</tr>
+<tr>
+<td><b>Default sorting value for search results</b></td>  
+<td>Select the entry that is selected by default for sorting the search results of an item search.</td>
+</tr>
+<tr>
+<td><b>Recommended search results: First search value;<br />Second search value;<br />Third search value</b></td>  
+<td>Select values for the recommended item search. Up to three values can be concatenated for the item search.<br /> <strong>Not selected</strong> = Select no value.<br /> <strong>Relevance</strong> = Display items by relevance.<br /> <strong>Item ID ⬆</strong> = Display items by item ID in ascending order.<br /> <strong>Item ID ⬇</strong> = Display items by item ID in descending order.<br /> <strong>Item name A-Z</strong> = Display items in alphabetical order by item name (A-Z).<br /> <strong>Item name Z-A</strong> = Display items in alphabetical order by item name (Z-A).<br /> <strong>Item position ⬆</strong> = Display items with the lowest position number first.<br /> <strong>Item position ⬇</strong> = Display items with the highest position number first.<br /> <b><i>Important</i></b>: In order for this function to work, a position number has to be saved for each of the item variations within the variation tab.<br /> <strong>Newest variation</strong> = Display the newest item variations first.<br /> <strong>Oldest variation</strong> = Display the oldest item variations first.<br /> <strong>Variation ID ⬆</strong> = Display item variations by variation ID in ascending order.<br /> <strong>Variation ID ⬇</strong> = Display item variations by variation ID in descending order.<br /> <strong>Variation number ⬆</strong> = Display item variations by variation number in ascending order.<br /> <strong>Variation number ⬇</strong> = Display item variations by variation number in descending order.<br /> <strong>Availability ⬆</strong> = Display item variations by availability in ascending order.<br /> <strong>Availability ⬇</strong> = Display item variations by availability in descending order.<br /> <strong>Last update</strong> = Display the last updated item variation first.<br /> <strong>First update</strong> = Display the first updated item variation first.<!--br /> <strong>Variation name A-Z</strong> = Artikelvarianten alphabetisch aufsteigend nach Name anzeigen.<br /> <strong>Variation name Z-A</strong> = Artikelvarianten alphabetisch absteigend nach Name anzeigen.<--><br /> <strong>Variation position ⬆</strong> = Display item variation with the lowest position number first.<br /> <strong>Variation position ⬇</strong> = Display item variation with the highest position number first.<br /> <b><i>Important</i></b>: In order for this function to work, a position number has to be saved for each of the item variations within the variation tab.<!--br /> <strong>Active variation ⬆</strong> = Aktive Artikelvarianten aufsteigend anzeigen.<br /> <strong>Active variation ⬇</strong> = Aktive Artikelvarianten absteigend anzeigen.<br /> <strong>Main variation ⬆</strong> = Hauptvarianten aufsteigend anzeigen.<br /> <strong>Main variation ⬇</strong> = Hauptvarianten absteigend anzeigen.<--><br /> <strong>Manufacturer A-Z</strong> = Display items in alphabetical order by manufacturer (A-Z).<br /> <strong>Manufacturer Z-A</strong> = Display items in alphabetical order by manufacturer (Z-A).<br /> <strong>Manufacturer position ⬆</strong> = Display items by manufacturer position in ascending order.<br /> <strong>Manufacturer position ⬇</strong> = Display items by manufacturer position in descending order.</td>
 </tr>
 </tbody>
-<caption>Table 6: Customising the pagination and sorting</caption>
+<caption>Table 7: Customising the pagination and sorting</caption>
 </table>
 
 
@@ -395,7 +499,7 @@ Settings specifically aimed at plugin developers are available in the **Registra
 2. Click on **Ceres**.<br /> → The plugin will open. 
 3. Click on **Configuration** in the directory tree. 
 4. Click on the **Registration** or **Logging and performance** tab. 
-5. Carry out the settings. Pay attention to the information given in table 7. 
+5. Carry out the settings. Pay attention to the information given in table 8. 
 6. **Save** the settings.
 
 <table>
@@ -429,19 +533,8 @@ Settings specifically aimed at plugin developers are available in the **Registra
 <td>Select a performance level.<br /> <strong>Live</strong> = Select the live mode when using the online store as a productive system. Files will be minified and bundled.<br /> <strong>Development</strong> = Select the development mode to use debugging functionality. Files will not be minified and bundled.</td>
 </tr>
 </tbody>
-<caption>Table 7: Carrying out settings for plugin development</caption>
+<caption>Table 8: Carrying out settings for plugin development</caption>
 </table>
-
-### Linking item lists
-
-Display item lists, e.g. **Last seen items**, in a very convenient way in your online store by using template containers. Proceed as follows to link the item list for last seen items with the item view of your online store.
-
-##### Linking an item list:
-
-1. Go to **Plugins » Content**. 
-2. Go to the **Last seen items** area. 
-3. Select one, several or **ALL** containers in which you want to display your item list, e.g. **Homepage: Container 7**, **Homepage: Container 9** or **Single item: Container for item lists**. 
-4. **Save** the settings.<br /> → The item list will be displayed in the selected containers in the online store.
 
 ### Setting online store languages
 
@@ -484,13 +577,23 @@ Enter the texts for the **cancellation rights**, the **privacy policy** and the 
 
 Set up the filters for the search and category view of the online store **Ceres** with the help of facets of the **Attribute/property** type.
 
-Set up attributes and properties first and link them with your items. For further information about attributes and properties, refer to the [Managing attributes and Managing properties]https://www.plentymarkets.co.uk/manual/item/managing-items/#1) chapters.
+Set up attributes and properties first and link them with your items. For further information about attributes and properties, refer to the [Managing attributes and Managing properties](https://www.plentymarkets.co.uk/manual/item/managing-items/#1) chapters.
 
 For further information about properties, refer to the [Managing properties](https://www.plentymarkets.co.uk/manual/item/managing-items/#2) chapter.
 
 Then, create facets for your attributes and properties. For further information about facets, refer to the [Creating facets](https://www.plentymarkets.co.uk/manual/client-store/global-settings/external-services/faceted-search/#2-1) chapter.
 
 Find detailed instructions about setting up filters in our [forum](https://forum.plentymarkets.com/t/howto-filter-in-ceres-einrichten/46679) (German link).
+
+### Setting up order properties
+
+With order properties, you allow your customers to enter a text when ordering an item linked to the order property. For example, customers choose an individual text that will be printed on an item. Set up order properties first and link them with your items. For further information about properties, refer to the [Managing properties](https://www.plentymarkets.co.uk/manual/item/managing-items/#2) chapter.
+
+Find details instructions about setting up order properties in our [forum](https://forum.plentymarkets.com/t/howto-bestellmerkmale-in-ceres-einrichten/63155).
+
+<div class="alert alert-warning" role="alert">
+    Only order properties of the type <strong>Text</strong> are available in the <strong>Ceres</strong> online store at the moment. Furthermore, organising order properties in property groups is not yet possible.
+</div>
 
 ## Customising Ceres<a id="20."></a>
 

@@ -1,25 +1,17 @@
-var ApiService      = require("services/ApiService");
-var CheckoutService = require("services/CheckoutService");
+const ApiService      = require("services/ApiService");
+const CheckoutService = require("services/CheckoutService");
 
-module.exports = (function($)
+/**
+ * Create a new address
+ * @param address
+ * @param addressType
+ * @param setActive
+ * @returns {*}
+ */
+export function createAddress(address, addressType, setActive)
 {
-
-    return {
-        createAddress: createAddress,
-        updateAddress: updateAddress,
-        deleteAddress: deleteAddress
-    };
-
-    /**
-     * Create a new address
-     * @param address
-     * @param addressType
-     * @param setActive
-     * @returns {*}
-     */
-    function createAddress(address, addressType, setActive)
-    {
-        return ApiService.post("rest/io/customer/address?typeId=" + addressType, address).done(function(response)
+    return ApiService.post("/rest/io/customer/address?typeId=" + addressType, address, {supressNotifications: true})
+        .done(response =>
         {
             if (setActive)
             {
@@ -33,28 +25,29 @@ module.exports = (function($)
                 }
             }
         });
-    }
+}
 
-    /**
-     * Update an existing address
-     * @param newData
-     * @param addressType
-     * @returns {*|Entry|undefined}
-     */
-    function updateAddress(newData, addressType)
-    {
-        addressType = addressType || newData.pivot.typeId;
-        return ApiService.put("rest/io/customer/address/" + newData.id + "?typeId=" + addressType, newData);
-    }
+/**
+ * Update an existing address
+ * @param newData
+ * @param addressType
+ * @returns {*|Entry|undefined}
+ */
+export function updateAddress(newData, addressType)
+{
+    addressType = addressType || newData.pivot.typeId;
+    return ApiService.put("/rest/io/customer/address/" + newData.id + "?typeId=" + addressType, newData, {supressNotifications: true});
+}
 
-    /**
-     * Delete an existing address
-     * @param addressId
-     * @param addressType
-     * @returns {*}
-     */
-    function deleteAddress(addressId, addressType)
-    {
-        return ApiService.delete("rest/io/customer/address/" + addressId + "?typeId=" + addressType);
-    }
-})(jQuery);
+/**
+ * Delete an existing address
+ * @param addressId
+ * @param addressType
+ * @returns {*}
+ */
+export function deleteAddress(addressId, addressType)
+{
+    return ApiService.delete("/rest/io/customer/address/" + addressId + "?typeId=" + addressType);
+}
+
+export default {createAddress, updateAddress, deleteAddress};
