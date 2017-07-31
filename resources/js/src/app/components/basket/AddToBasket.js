@@ -1,4 +1,4 @@
-var ResourceService = require("services/ResourceService");
+const ResourceService = require("services/ResourceService");
 
 Vue.component("add-to-basket", {
 
@@ -6,19 +6,25 @@ Vue.component("add-to-basket", {
         "item",
         "itemUrl",
         "showQuantity",
-        "template"
+        "template",
+        "salable",
+        "useLargeScale",
+        "showOrderProperties"
     ],
 
-    data: function()
+    data()
     {
         return {
-            quantity: 1
+            quantity: 1,
+            buttonLockState: false
         };
     },
 
-    created: function()
+    created()
     {
         this.$options.template = this.template;
+
+        this.useLargeScale = this.useLargeScale || false;
     },
 
     methods:
@@ -26,12 +32,13 @@ Vue.component("add-to-basket", {
         /**
          * add an item to basket-resource
          */
-        addToBasket: function()
+        addToBasket()
         {
-            var basketObject =
+            const basketObject =
                 {
-                    variationId: this.variationId,
-                    quantity   : this.quantity
+                    variationId             :   this.variationId,
+                    quantity                :   this.quantity,
+                    basketItemOrderParams   :   this.item.properties
                 };
 
             ResourceService
@@ -41,17 +48,22 @@ Vue.component("add-to-basket", {
             this.openAddToBasketOverlay();
         },
 
-        directToItem: function()
+        directToItem()
         {
             window.location.assign(this.itemUrl);
+        },
+
+        handleButtonState(value)
+        {
+            this.buttonLockState = value;
         },
 
         /**
          * open the AddItemToBasketOverlay
          */
-        openAddToBasketOverlay: function()
+        openAddToBasketOverlay()
         {
-            var currentBasketObject =
+            const currentBasketObject =
                 {
                     currentBasketItem: this.item,
                     quantity         : this.quantity
@@ -66,7 +78,7 @@ Vue.component("add-to-basket", {
          * update the property quantity of the current instance
          * @param value
          */
-        updateQuantity: function(value)
+        updateQuantity(value)
         {
             this.quantity = value;
         }
@@ -77,12 +89,12 @@ Vue.component("add-to-basket", {
         /**
          * returns item.variation.id
          */
-        variationId: function()
+        variationId()
         {
             return this.item.variation.id;
         },
 
-        hasChildren: function()
+        hasChildren()
         {
             return this.item.filter && this.item.filter.hasChildren && App.isCategoryView;
         }
